@@ -2,11 +2,15 @@ package org.example;
 
 import java.util.Scanner;
 
+// Definición de la clase AgregarArbol
 public class AgregarArbol {
 
-    public void nodoDefecto(){
+    // Método para crear un árbol con nodos predefinidos
+    public void nodoDefecto() {
+        // Creación del nodo raíz con valor 3
         NodoArbol raiz = new NodoArbol(3);
 
+        // Creación de nodos hijos y agregándolos al nodo raíz
         NodoArbol nodo1 = new NodoArbol(3);
         NodoArbol nodo2 = new NodoArbol(4);
         raiz.agregarNodo(nodo1);
@@ -37,6 +41,7 @@ public class AgregarArbol {
         nodo5.agregarNodo(node11);
         nodo5.agregarNodo(node12);
 
+        // Creación de nodos hoja y agregándolos a los nodos intermedios
         NodoArbol node13 = new NodoArbol(13);
         NodoArbol node14 = new NodoArbol(12);
         NodoArbol node15 = new NodoArbol(15);
@@ -65,14 +70,16 @@ public class AgregarArbol {
         node12.agregarNodo(node24);
         node12.agregarNodo(node25);
 
-
+        // Llamada al método sumaMaxima para encontrar el camino de mayor valor
         int maxSum = ArbolBinario.sumaMaxima(raiz);
         System.out.println("Camino de mayor valor: " + maxSum);
 
+        // Llamada al método mostrarArbol para mostrar la estructura del árbol
         ArbolBinario.mostrarArbol(raiz, "", true);
     }
 
-    public static NodoArbol createTree() {
+    // Método para crear un árbol de forma interactiva mediante entrada por consola
+    public static NodoArbol CrearArbol() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Ingrese el valor del nodo actual:");
         int value = scanner.nextInt();
@@ -81,15 +88,16 @@ public class AgregarArbol {
         System.out.println("¿Desea agregar un nodo izquierdo? (S/N)");
         String input = scanner.next().toLowerCase();
         if (input.equals("s")) {
-            root.agregarNodo(createTree()); // Llamada recursiva para agregar el nodo izquierdo
+            root.agregarNodo(CrearArbol()); // Llamada recursiva para agregar el nodo izquierdo
         }
 
         System.out.println("¿Desea agregar un nodo derecho? (S/N)");
         input = scanner.next().toLowerCase();
         if (input.equals("s")) {
-            root.agregarNodo(createTree()); // Llamada recursiva para agregar el nodo derecho
+            root.agregarNodo(CrearArbol()); // Llamada recursiva para agregar el nodo derecho
         }
 
         return root;
     }
 }
+
